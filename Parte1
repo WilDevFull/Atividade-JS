@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+
+    <h1>Formulário de Cadastro</h1>
+
+    <form id="form">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required><br><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" required><br><br>
+
+        <button type="button" onclick="gravarDados()">Gravar</button>
+        <button type="button" onclick="exibirDados()">Exibir</button>
+    </form>
+
+    <h2>Dados Armazenados:</h2>
+    <div id="dados"></div>
+
+    <script>
+        function gravarDados() {
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('endereco', endereco);
+            localStorage.setItem('email', email);
+            localStorage.setItem('telefone', telefone);
+
+            alert('Dados gravados com sucesso!');
+        }
+
+        function exibirDados() {
+            const nome = localStorage.getItem('nome');
+            const endereco = localStorage.getItem('endereco');
+            const email = localStorage.getItem('email');
+            const telefone = localStorage.getItem('telefone');
+
+            document.getElementById('dados').innerHTML = `
+                Nome: ${nome} <br>
+                Endereço: ${endereco} <br>
+                Email: ${email} <br>
+                Telefone: ${telefone}
+            `;
+        }
+    </script>
+
+</body>
+</html>
